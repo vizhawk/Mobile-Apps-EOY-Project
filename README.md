@@ -1,6 +1,6 @@
 # Mobile-Apps-EOY-Project
 
-Application Name: HWMaster: Homework Manager
+Application Name: HWMaster
 
 Team Members: Vishakh Hari, Abhinav Tanniru
 
