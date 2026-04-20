@@ -15,5 +15,6 @@
 ## Architecture: 
 >The application architecture is predicated on the importance of lightweight structure, both in the UI and frontend code.
 >The UI, supported by simple functions and JS StyleSheet, will consist of classes and associated assignments presented in a simple, organized format through a ScrollView with nested View components for each class and assignment.
->Two tabs for active and completed assignments, each with a ScrollView component, will enable a user to not only manage their homework priorities, but also refer back to previously completed assignments, dates of completion, and grades earned. 
+>Two tabs for active and completed assignments, each with a ScrollView component, will enable a user to not only manage their homework priorities, but also refer back to previously completed assignments, dates of completion, and grades earned.
+>The third tab, which is the tab the user begins on, will show assignment progress out of 100% to help the student know how much of their work they have completed. 
 
