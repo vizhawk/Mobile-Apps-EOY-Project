@@ -4,7 +4,7 @@
 >HWMaster
 
 ## Team Members: 
->Vishakh Hari, Abhinav Tanniru
+>Vishakh Hari, Abhinav Tanniru, Mohit Mukkollu
 
 ## Description:  
 >HWMaster is a homework management app designed to help students stay organized with minimal possible effort.
