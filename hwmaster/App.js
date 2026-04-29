@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+import {AppRegistry, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from "react-native";
 
 export default function App() {
   const [tab, setTab] = useState("progress");
