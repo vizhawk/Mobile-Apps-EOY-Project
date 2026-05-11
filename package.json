@@ -1,7 +1,7 @@
 {
   "name": "hwmaster",
   "version": "1.0.0",
-  "main": "App.js",
+  "main": "hwmaster/maincode.jsx",
   "dependencies": {
     "expo": "~49.0.0",
     "react": "18.2.0",
