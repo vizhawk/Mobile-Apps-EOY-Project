@@ -1,10 +1,11 @@
 {
   "name": "hwmaster",
   "version": "1.0.0",
-  "main": "App.js",
+  "main": "hwmaster/maincode.jsx",
   "dependencies": {
-    "expo": "~49.0.0",
-    "react": "18.2.0",
-    "react-native": "0.72.0"
+    "expo": "~54.0.0",
+    "expo-constants": "~18.0.13",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
   }
 }

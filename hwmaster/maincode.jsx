@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, StyleSheet, Image, TextInput, ImageBackground, TouchableHighlight, Alert, Dimensions, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
+import { registerRootComponent } from 'expo';
+
 
 let deviceHeight = Dimensions.get('window').height;
 let deviceWidth = Dimensions.get('window').width;
@@ -44,7 +46,7 @@ export default class App extends Component {
                         <ScrollView>
 
                             <Text style={styles.titelTxt}>
-                                hw tracker
+                                HWMaster
                             </Text>
 
                             <Image
@@ -356,3 +358,4 @@ const styles = StyleSheet.create({
         color: 'black',
     },
 });
+registerRootComponent(App);
