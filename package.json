@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "hwmaster/maincode.jsx",
   "dependencies": {
+    "@react-native-community/datetimepicker": "8.4.4",
     "expo": "~54.0.0",
     "expo-constants": "~18.0.13",
     "react": "19.1.0",
