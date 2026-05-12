@@ -247,7 +247,7 @@ export default class App extends Component {
 
                         <ScrollView>
                             {this.state.completedAssignments.map((assignment, index) => (
-    <                           View key={assignment.id} style={styles.assignmentCard}>
+                                <View key={assignment.id} style={styles.assignmentCard}>
                                     <Text style={styles.assignmentName}>
                                         {assignment.name}
                                     </Text>
