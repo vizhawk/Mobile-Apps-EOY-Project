@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppRegistry, Text, View, StyleSheet, Image, TextInput, ImageBackground, TouchableHighlight, Alert, Dimensions, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { registerRootComponent } from 'expo';
@@ -21,6 +22,28 @@ export default class App extends Component {
         completedAssignments: [],
         showHomeScreen: true,
     }
+    
+    componentDidMount() {
+        AsyncStorage.getItem('assignments').then(data => {
+            if (data !== null) {
+                let parsed = JSON.parse(data);
+                parsed = parsed.map(a => ({ ...a, dueDate: new Date(a.dueDate) }));
+                this.setState({ assignments: parsed });
+            }
+        });
+        AsyncStorage.getItem('completedAssignments').then(data => {
+            if (data !== null) {
+                let parsed = JSON.parse(data);
+                parsed = parsed.map(a => ({ ...a, dueDate: new Date(a.dueDate) }));
+                this.setState({ completedAssignments: parsed });
+            }
+        });
+    }
+
+    saveToStorage = (assignments, completedAssignments) => {
+        AsyncStorage.setItem('assignments', JSON.stringify(assignments));
+        AsyncStorage.setItem('completedAssignments', JSON.stringify(completedAssignments));
+    };
 
     handleEnterApp = () => {
         this.setState({ showHomeScreen: false });
@@ -51,11 +74,14 @@ export default class App extends Component {
             class: this.state.className,
             dueDate: this.state.dueDate,
         };
+        let newAssignments = [...this.state.assignments, newAssignment];
         this.setState({
-            assignments: [...this.state.assignments, newAssignment],
+            assignments: newAssignments,
             assignmentName: '',
             className: '',
             dueDate: new Date(),
+        }, () => {
+            this.saveToStorage(this.state.assignments, this.state.completedAssignments);
         });
     };
 
@@ -82,25 +108,32 @@ export default class App extends Component {
     };
 
     completedAssignment = (id) => {
-        let completedAssignment = this.state.assignments.find(a => a.id === id);
+        let done = this.state.assignments.find(a => a.id === id);
+        let newAssignments = this.state.assignments.filter(a => a.id !== id);
+        let newCompleted = [...this.state.completedAssignments, done];
         this.setState({
-            assignments: this.state.assignments.filter(a => a.id !== id),
-            completedAssignments: [...this.state.completedAssignments, completedAssignment]
+            assignments: newAssignments,
+            completedAssignments: newCompleted,
+        }, () => {
+            this.saveToStorage(this.state.assignments, this.state.completedAssignments);
         });
     };
-
     deleteAssignmentUpcoming = (id) => {
+        let newAssignments = this.state.assignments.filter(a => a.id !== id);
         this.setState({
-            assignments: this.state.assignments.filter(a => a.id !== id)
+            assignments: newAssignments,
+        }, () => {
+            this.saveToStorage(this.state.assignments, this.state.completedAssignments);
         });
     };
-
     deleteAssignmentCompleted = (id) => {
+        let newCompleted = this.state.completedAssignments.filter(a => a.id !== id);
         this.setState({
-            completedAssignments: this.state.completedAssignments.filter(a => a.id !== id)
+            completedAssignments: newCompleted,
+        }, () => {
+            this.saveToStorage(this.state.assignments, this.state.completedAssignments);
         });
     };
-
 
     render() {
 
